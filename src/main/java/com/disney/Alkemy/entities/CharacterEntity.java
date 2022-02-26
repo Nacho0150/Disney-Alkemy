@@ -1,10 +1,12 @@
-package com.disney.Alkemy.entities;
+package com.disney.alkemy.entities;
 
 import com.sun.istack.NotNull;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -20,10 +22,10 @@ import org.hibernate.annotations.Where;
 /**
  * Serializable es una clase que sirve solamente para especificar que todo el estado de un objeto instanciado podrá ser escrito o enviado en la red como una trama de bytes.
  */
-public class Character implements Serializable { //personaje
+public class CharacterEntity implements Serializable { //personaje
     @Id
-    @GeneratedValue
-    private String id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     
     private String image;
     
@@ -43,7 +45,8 @@ public class Character implements Serializable { //personaje
      * PARA PODER VINCULAR MUCHOS PERSONAJES A UNA PELICULA Y MUCHAS PELICULAS A UN PERSONAJE
      */
     @ManyToMany(mappedBy = "character") //PARA INDICAR LA RELACION BIDIRECCIONAL.
-    private List<FilmorSerie> filmorserie; //peliculas o series asociados
+    @Column(name = "film_or_serie")
+    private List<FilmorSerieEntity> filmorserie; //peliculas o series asociados
     
     private Boolean deleted;
 }

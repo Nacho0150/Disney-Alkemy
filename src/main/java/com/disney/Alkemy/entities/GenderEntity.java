@@ -1,9 +1,11 @@
-package com.disney.Alkemy.entities;
+package com.disney.alkemy.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -16,10 +18,10 @@ import org.hibernate.annotations.Where;
 @Data //agrega automaticamente los @Getter, @Setter, @EqualsAndHashCode y @RequiredArgsConstructor
 @SQLDelete(sql = "UPDATE car SET deleted=true WHERE id = ?")
 @Where(clause = "deleted = false")
-public class Gender implements Serializable { //genero de la pelicula
+public class GenderEntity implements Serializable { //genero de la pelicula
     @Id
-    @GeneratedValue
-    private String id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     
     private String name;
     
@@ -29,7 +31,8 @@ public class Gender implements Serializable { //genero de la pelicula
      * PARA PODER VINCULAR MUCHOS GENEROS A UNA PELICULA Y MUCHAS PELICULAS A UN GENERO
      */
     @ManyToMany(mappedBy = "gender") //PARA INDICAR LA RELACION BIDIRECCIONAL.
-    private List<FilmorSerie> filmorserie; //peliculas o series asociados
+    @Column(name = "film_or_serie")
+    private List<FilmorSerieEntity> filmorserie; //peliculas o series asociados
     
     private Boolean deleted;
 }

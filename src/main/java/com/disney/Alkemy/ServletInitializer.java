@@ -1,4 +1,4 @@
-package com.disney.Alkemy;
+package com.disney.alkemy;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

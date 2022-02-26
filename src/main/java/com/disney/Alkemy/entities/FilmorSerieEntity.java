@@ -1,12 +1,14 @@
-package com.disney.Alkemy.entities;
+package com.disney.alkemy.entities;
 
 import com.sun.istack.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -23,10 +25,10 @@ import org.hibernate.annotations.Where;
 @Data //agrega automaticamente los @Getter, @Setter, @EqualsAndHashCode y @RequiredArgsConstructor
 @SQLDelete(sql = "UPDATE car SET deleted=true WHERE id = ?")
 @Where(clause = "deleted = false")
-public class FilmorSerie implements Serializable { //pelicula o serie
+public class FilmorSerieEntity implements Serializable { //pelicula o serie
     @Id
-    @GeneratedValue
-    private String id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     
     private String imagen;
     
@@ -34,6 +36,7 @@ public class FilmorSerie implements Serializable { //pelicula o serie
     private String title;
     
     @Temporal(TemporalType.DATE)
+    @Column(name = "creation_date")
     private Date creationdate;
     
     @NotNull
@@ -48,7 +51,7 @@ public class FilmorSerie implements Serializable { //pelicula o serie
         inverseJoinColumns = @JoinColumn(name="FK_CHARACTER", nullable = false)
     )
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<Character> character; //personajes asociados a cada pelicula o serie
+    private List<CharacterEntity> character; //personajes asociados a cada pelicula o serie
 
     /** 
      * PARA PODER VINCULAR MUCHOS GENEROS A UNA PELICULA Y MUCHAS PELICULAS A UN GENERO
@@ -59,7 +62,7 @@ public class FilmorSerie implements Serializable { //pelicula o serie
         inverseJoinColumns = @JoinColumn(name="FK_GENDER", nullable = false)
     )
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<Gender> gender;
+    private List<GenderEntity> gender;
     
     private Boolean deleted;
 }

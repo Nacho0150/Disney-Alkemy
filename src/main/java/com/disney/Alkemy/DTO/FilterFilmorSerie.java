@@ -1,4 +1,4 @@
-package com.disney.Alkemy.DTO;
+package com.disney.alkemy.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
