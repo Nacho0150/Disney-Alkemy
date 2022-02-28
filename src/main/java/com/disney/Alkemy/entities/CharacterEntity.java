@@ -9,22 +9,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Data;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 @Entity
-@Table(name = "character")
-@Data //agrega automaticamente los @Getter, @Setter, @EqualsAndHashCode y @RequiredArgsConstructor
-@SQLDelete(sql = "UPDATE car SET deleted=true WHERE id = ?") //nos permite realizar un borrado lógico cuando el método delete de JPA es invocado
-@Where(clause = "deleted = false") //va a permitir establecer un filtro a la hora de mostrar nuestro objeto
-/**
- * Serializable es una clase que sirve solamente para especificar que todo el estado de un objeto instanciado podrá ser escrito o enviado en la red como una trama de bytes.
- */
+@Table(name = "characters")
+@Data
+@SQLDelete(sql = "UPDATE car SET deleted=true WHERE id = ?")
+@Where(clause = "deleted = false")
+@SequenceGenerator(
+    name="CharactersSeq",
+    sequenceName = "CHARACTERS_SEQ",
+    initialValue = 1, 
+    allocationSize = 1
+)
 public class CharacterEntity implements Serializable { //personaje
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CharactersSeq")
     private Long id;
     
     private String image;
@@ -44,7 +48,7 @@ public class CharacterEntity implements Serializable { //personaje
     /** 
      * PARA PODER VINCULAR MUCHOS PERSONAJES A UNA PELICULA Y MUCHAS PELICULAS A UN PERSONAJE
      */
-    @ManyToMany(mappedBy = "character") //PARA INDICAR LA RELACION BIDIRECCIONAL.
+    @ManyToMany(mappedBy = "characters") //PARA INDICAR LA RELACION BIDIRECCIONAL.
     @Column(name = "film_or_serie")
     private List<FilmorSerieEntity> filmorserie; //peliculas o series asociados
     

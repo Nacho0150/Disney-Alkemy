@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Data;
 import org.hibernate.annotations.SQLDelete;
@@ -15,12 +16,18 @@ import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "gender")
-@Data //agrega automaticamente los @Getter, @Setter, @EqualsAndHashCode y @RequiredArgsConstructor
+@Data
 @SQLDelete(sql = "UPDATE car SET deleted=true WHERE id = ?")
 @Where(clause = "deleted = false")
+@SequenceGenerator(
+    name="GenderSeq",
+    sequenceName = "GENDERS_SEQ",
+    initialValue = 1, 
+    allocationSize = 1
+)
 public class GenderEntity implements Serializable { //genero de la pelicula
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GenderSeq")
     private Long id;
     
     private String name;

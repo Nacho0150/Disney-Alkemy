@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "a454ba9e-ba15-4b51-ab8b-c8fde4a0b7e1",
+		"name": "Disney-Alkemy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "filmorseries",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"image\": \"/usr/tmp/img2.jpg\",\r\n    \"title\": \"Frozen\",\r\n    \"creationdate\": \"2019-01-25\",\r\n    \"qualification\": \"4\",\r\n    \"characters\": [\r\n        {\"name\": \"Elsa\"\r\n        }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/filmorseries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"filmorseries"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
