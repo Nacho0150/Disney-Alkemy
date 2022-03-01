@@ -11,6 +11,6 @@ public class FilmorSerieDTO {
     String title;
     String creationdate;
     Integer qualification;
-    List<CharacterEntity> characters;
+    List<CharacterDTO> characters;
     String genderId;
 }

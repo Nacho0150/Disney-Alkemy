@@ -39,7 +39,7 @@ public class GenderEntity implements Serializable { //genero de la pelicula
      */
     @ManyToMany(mappedBy = "gender") //PARA INDICAR LA RELACION BIDIRECCIONAL.
     @Column(name = "film_or_serie")
-    private List<FilmorSerieEntity> filmorserie; //peliculas o series asociados
+    private List<FilmorSerieEntity> filmsorseries; //peliculas o series asociados
     
-    private Boolean deleted;
+    private Boolean deleted = Boolean.FALSE;
 }

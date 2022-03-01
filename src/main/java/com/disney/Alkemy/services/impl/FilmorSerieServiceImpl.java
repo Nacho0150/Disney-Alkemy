@@ -21,15 +21,19 @@ public class FilmorSerieServiceImpl implements FilmorSerieService{
     
     //NO SE LES AGREGA EL OVERRIDE, PORQUE SINO, NO SE CREAN LOS BEANS
     public FilmorSerieDTO save(FilmorSerieDTO dto) throws ParseException {
-        FilmorSerieEntity entity = filmorSerieMapper.filmorserieDTO2Entity(dto);
+        FilmorSerieEntity entity = filmorSerieMapper.filmorserieDTO2Entity(dto, true);
         FilmorSerieEntity entitySaved = filmorSerieRepository.save(entity);
-        FilmorSerieDTO result = filmorSerieMapper.filmorserieEntity2DTO(entitySaved);
+        FilmorSerieDTO result = filmorSerieMapper.filmorserieEntity2DTO(entitySaved, true);
         return result;
     }
 
     public List<FilmorSerieDTO> getAllFilmsorSeries() throws ParseException {
         List<FilmorSerieEntity> entities = filmorSerieRepository.findAll();
-        List<FilmorSerieDTO> result = filmorSerieMapper.filmorserieEntityList2DTOList(entities);
+        List<FilmorSerieDTO> result = filmorSerieMapper.filmorserieEntityList2DTOList(entities, false);
         return result;
+    }
+    
+    public void delete(Long id) {
+        filmorSerieRepository.deleteById(id);
     }
 }

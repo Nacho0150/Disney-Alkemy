@@ -9,4 +9,6 @@ public interface FilmorSerieService {
     FilmorSerieDTO save(FilmorSerieDTO dto) throws ParseException;
     
     List<FilmorSerieDTO> getAllFilmsorSeries() throws ParseException;
+    
+    void delete(Long id);
 }

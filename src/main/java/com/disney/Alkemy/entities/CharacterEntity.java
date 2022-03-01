@@ -18,7 +18,7 @@ import org.hibernate.annotations.Where;
 @Entity
 @Table(name = "characters")
 @Data
-@SQLDelete(sql = "UPDATE car SET deleted=true WHERE id = ?")
+@SQLDelete(sql = "UPDATE characters SET deleted=true WHERE id = ?")
 @Where(clause = "deleted = false")
 @SequenceGenerator(
     name="CharactersSeq",
@@ -50,7 +50,7 @@ public class CharacterEntity implements Serializable { //personaje
      */
     @ManyToMany(mappedBy = "characters") //PARA INDICAR LA RELACION BIDIRECCIONAL.
     @Column(name = "film_or_serie")
-    private List<FilmorSerieEntity> filmorserie; //peliculas o series asociados
+    private List<FilmorSerieEntity> filmsorseries; //peliculas o series asociados
     
-    private Boolean deleted;
+    private Boolean deleted = Boolean.FALSE;
 }

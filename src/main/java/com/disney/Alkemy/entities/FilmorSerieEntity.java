@@ -24,8 +24,10 @@ import org.hibernate.annotations.Where;
 @Entity
 @Table(name = "filmorserie")
 @Data //agrega automaticamente los @Getter, @Setter, @EqualsAndHashCode y @RequiredArgsConstructor
-@SQLDelete(sql = "UPDATE car SET deleted=true WHERE id = ?") //nos permite realizar un borrado lógico cuando el método delete de JPA es invocado
-@Where(clause = "deleted = false") //va a permitir establecer un filtro a la hora de mostrar nuestro objeto
+//ES PARA INDICAR QUE HAGA UN SOFTDELETE
+@SQLDelete(sql = "UPDATE filmorserie SET deleted=true WHERE id = ?") //nos permite realizar un borrado lógico cuando el método delete de JPA es invocado
+@Where(clause = "deleted = false") //va a permitir establecer un filtro a la hora de mostrar nuestro objeto, para diferenciar cuales fueron borrados de los que no
+//
 @SequenceGenerator( //PARA QUE SE INICIE SIEMPRE EL ID EN 1
     name="FilmorSerieSeq", //nombre con el que se lo referencia para que se efectue esta secuencia
     sequenceName = "FILMSORSERIES_SEQ", //el nombre que va a tener la tabla de incremento
@@ -77,5 +79,6 @@ public class FilmorSerieEntity implements Serializable { //pelicula o serie
     @Column(name = "gender_id")
     private String genderId;
     
-    private Boolean deleted;
+    //PARA EL SOFTDELETE
+    private Boolean deleted = Boolean.FALSE;
 }
