@@ -1,5 +1,5 @@
 package com.disney.alkemy.dto;
 
-public class GenderBasicDTO {
+public class FilmorSerieFilterDTO {
     
 }

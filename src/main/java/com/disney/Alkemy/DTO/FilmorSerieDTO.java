@@ -1,6 +1,5 @@
 package com.disney.alkemy.dto;
 
-import com.disney.alkemy.entities.CharacterEntity;
 import java.util.List;
 import lombok.Data;
 
@@ -12,5 +11,5 @@ public class FilmorSerieDTO {
     String creationdate;
     Integer qualification;
     List<CharacterDTO> characters;
-    String genderId;
+    Long genderId;
 }

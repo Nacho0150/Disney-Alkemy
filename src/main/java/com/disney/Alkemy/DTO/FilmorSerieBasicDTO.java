@@ -1,13 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.disney.alkemy.dto;
 
+import java.io.Serializable;
+import lombok.Data;
+
+@Data
 /**
- *
- * @author ignac
+ * ESTE ES LO QUE VA A MOSTRAR EL LISTADO DE PELICULAS
  */
-public class FilmorSerieBasicDTO {
-    
+public class FilmorSerieBasicDTO implements Serializable{
+    Long id;
+    String image;
+    String title;
+    String creationdate;
 }

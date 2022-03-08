@@ -1,6 +1,8 @@
 package com.disney.alkemy.mapper;
 
+import com.disney.alkemy.dto.CharacterBasicDTO;
 import com.disney.alkemy.dto.CharacterDTO;
+import com.disney.alkemy.dto.CharacterFilterDTO;
 import com.disney.alkemy.dto.FilmorSerieDTO;
 import com.disney.alkemy.entities.CharacterEntity;
 import com.disney.alkemy.entities.FilmorSerieEntity;
@@ -55,17 +57,38 @@ public class CharacterMapper {
         return dto;
     }
     
+    public CharacterBasicDTO characterEntity2BasicDTO(CharacterEntity entity){
+        CharacterBasicDTO dto = new CharacterBasicDTO();
+        dto.setId(entity.getId());
+        dto.setImage(entity.getImage());
+        dto.setName(entity.getName()); 
+        return dto;
+    }
+    
     /**
-     * PARA PASAR UNA LISTA DE ENTIDADES A UNA LISTA DE DTOS, REUTILIZANDO UNO DE LOS METODOS
+     * PARA PASAR UNA LISTA DE ENTIDADES A UNA LISTA DE DTOS BASE, REUTILIZANDO UNO DE LOS METODOS
+     * @param entities
+     * @return DEVUELVE YA TODO PASADO
+     */
+    public List<CharacterBasicDTO> characterEntityList2BasicDTOList(List<CharacterEntity> entities){
+        List<CharacterBasicDTO> dtos = new ArrayList<>();
+        for (CharacterEntity entity : entities) {
+            dtos.add(characterEntity2BasicDTO(entity));
+        }
+        return dtos;
+    }
+    
+    /**
+     * PARA PASAR UNA LISTA DE ENTIDADES A UNA LISTA DE DTOS BASE, REUTILIZANDO UNO DE LOS METODOS
      * @param entities
      * @param loadFilmsorSeries
      * @return DEVUELVE YA TODO PASADO
      * @throws java.text.ParseException
      */
-    public List<CharacterDTO> characterEntityList2DTOList(List<CharacterEntity> entities, boolean loadFilmsorSeries) throws ParseException{
+    public List<CharacterDTO> characterEntityList2FilterDTOList(List<CharacterEntity> entities, boolean loadFilmsorSeries) throws ParseException{
         List<CharacterDTO> dtos = new ArrayList<>();
         for (CharacterEntity entity : entities) {
-            dtos.add(this.characterEntity2DTO(entity, loadFilmsorSeries));
+            dtos.add(characterEntity2DTO(entity, loadFilmsorSeries));
         }
         return dtos;
     }

@@ -29,8 +29,8 @@ public class FilmorSerieController {
     }
     
     @GetMapping 
-    public ResponseEntity<List<FilmorSerieDTO>> getAll() throws ParseException{ //PARA OBTENER TODOS LAS PELICULAS
-        List<FilmorSerieDTO> filmsorseries = filmorserieService.getAllFilmsorSeries();
+    public ResponseEntity<List<FilmorSerieDTO>> filmorserieDetail() throws ParseException{ //PARA OBTENER TODO SOBRE
+        List<FilmorSerieDTO> filmsorseries = filmorserieService.getAllFilmsorSeries();     //PELICULAS O SERIES.
         return ResponseEntity.ok().body(filmsorseries);
     } 
     

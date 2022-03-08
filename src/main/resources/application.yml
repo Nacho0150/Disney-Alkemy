@@ -11,6 +11,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
         naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+        format_sql: false
     database: MYSQL
     show-sql: true
   thymeleaf:
