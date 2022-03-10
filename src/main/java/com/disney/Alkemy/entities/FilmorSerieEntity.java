@@ -67,7 +67,7 @@ public class FilmorSerieEntity implements Serializable { //pelicula o serie
         joinColumns = @JoinColumn(name = "FK_FILMORSERIE", nullable = false),
         inverseJoinColumns = @JoinColumn(name="FK_CHARACTERS", nullable = false)
     )
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<CharacterEntity> characters; //personajes asociados a cada pelicula o serie
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

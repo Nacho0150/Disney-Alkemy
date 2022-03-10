@@ -2,7 +2,6 @@ package com.disney.alkemy.mapper;
 
 import com.disney.alkemy.dto.CharacterBasicDTO;
 import com.disney.alkemy.dto.CharacterDTO;
-import com.disney.alkemy.dto.CharacterFilterDTO;
 import com.disney.alkemy.dto.FilmorSerieDTO;
 import com.disney.alkemy.entities.CharacterEntity;
 import com.disney.alkemy.entities.FilmorSerieEntity;
@@ -91,5 +90,18 @@ public class CharacterMapper {
             dtos.add(characterEntity2DTO(entity, loadFilmsorSeries));
         }
         return dtos;
+    }
+    
+    /**
+     * DONDE SE ACTUALIZAN LOS PERSONAJES
+     * @param entity
+     * @param characterDTO 
+     */
+    public void characterEntityUpdates(CharacterEntity entity, CharacterDTO characterDTO) {
+        entity.setImage(characterDTO.getImage());
+        entity.setName(characterDTO.getName());
+        entity.setAge(characterDTO.getAge());
+        entity.setWeight(characterDTO.getWeight());
+        entity.setStory(characterDTO.getStory());
     }
 }

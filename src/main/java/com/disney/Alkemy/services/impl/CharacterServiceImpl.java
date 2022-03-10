@@ -64,6 +64,17 @@ public class CharacterServiceImpl implements CharacterService{
         List<CharacterDTO> dtos = characterMapper.characterEntityList2FilterDTOList(entities, true);
         return dtos;
     }
+    
+    public CharacterDTO update(Long id, CharacterDTO characterDTO) throws ParamNotFound, ParseException {
+        Optional<CharacterEntity> entity = characterRepository.findById(id);
+        if (!entity.isPresent()){
+            throw new ParamNotFound("Id del personaje no valido");
+        }
+        characterMapper.characterEntityUpdates(entity.get(), characterDTO);
+        CharacterEntity entitySaved = characterRepository.save(entity.get());
+        CharacterDTO result = characterMapper.characterEntity2DTO(entitySaved, false);
+        return result;
+    }
 
     public void delete(Long id) {
         characterRepository.deleteById(id);
