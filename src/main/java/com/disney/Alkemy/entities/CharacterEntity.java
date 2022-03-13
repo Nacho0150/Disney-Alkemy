@@ -2,7 +2,9 @@ package com.disney.alkemy.entities;
 
 import com.sun.istack.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,25 +34,16 @@ public class CharacterEntity implements Serializable { //personaje
     private Long id;
     
     private String image;
-    
-    @NotNull
     private String name;
-    
-    @NotNull
     private Integer age;
-    
-    @NotNull
     private Double weight;
-    
-    @NotNull
     private String story;
     
     /** 
      * PARA PODER VINCULAR MUCHOS PERSONAJES A UNA PELICULA Y MUCHAS PELICULAS A UN PERSONAJE
      */
-    @ManyToMany(mappedBy = "characters") //PARA INDICAR LA RELACION BIDIRECCIONAL.
-    @Column(name = "film_or_serie")
-    private List<FilmorSerieEntity> filmsorseries; //peliculas o series asociados
+    @ManyToMany(mappedBy = "characters", cascade = CascadeType.ALL) //PARA INDICAR LA RELACION BIDIRECCIONAL.
+    private List<FilmorSerieEntity> filmsorseries = new ArrayList<>(); //peliculas o series asociados
     
     private Boolean deleted = Boolean.FALSE;
 }

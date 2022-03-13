@@ -2,9 +2,11 @@ package com.disney.alkemy.dto;
 
 import java.io.Serializable;
 import java.util.List;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class CharacterDTO implements Serializable {
     Long id;
     String image;

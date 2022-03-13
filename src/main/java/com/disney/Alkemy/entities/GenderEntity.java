@@ -1,7 +1,9 @@
 package com.disney.alkemy.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,16 +35,14 @@ public class GenderEntity implements Serializable { //genero de la pelicula
     private Long id;
     
     private String name;
-    
     private String image;
     
     /** 
      * PARA PODER VINCULAR MUCHOS GENEROS A UNA PELICULA Y MUCHAS PELICULAS A UN GENERO
      */
     @OneToMany(mappedBy = "gender") //PARA INDICAR LA RELACION BIDIRECCIONAL.
-    @Column(name = "film_or_serie")
 //    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE) //ESTO ES POR SI SE CREAN TABLAS DUPLICADAS  
-    private List<FilmorSerieEntity> filmsorseries; //peliculas o series asociados
+    private List<FilmorSerieEntity> filmsorseries = new ArrayList<>(); //peliculas o series asociados
     
     private Boolean deleted = Boolean.FALSE;
 }

@@ -39,14 +39,14 @@ public class CharacterController {
         return ResponseEntity.status(HttpStatus.OK).body(character);
     } 
     
-    @GetMapping
+    @GetMapping("/filter")
     public ResponseEntity<List<CharacterBasicDTO>> getAllCharacters(){ //PARA OBTENER TODOS LAS PELICULAS
         List<CharacterBasicDTO> character = characterService.getAllCharacters();
         return ResponseEntity.status(HttpStatus.OK).body(character);
     } 
     
     //A ESTE @GetMapping LE TENGO QUE PONER UNA ESPECIFICACION PORQUE NO ME DEJA TENER DOS @GetMapping SIN ESPECIFICACIONES
-    @GetMapping("/filter")
+    @GetMapping
     public ResponseEntity<List<CharacterDTO>> characterdetailFilters(
             @RequestParam(required = false) String name,
             @RequestParam(required = false) Integer age,

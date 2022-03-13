@@ -41,11 +41,12 @@ public class CharacterMapper {
      */
     public CharacterDTO characterEntity2DTO(CharacterEntity entity, boolean loadFilmsorSeries) throws ParseException{
         CharacterDTO dto = new CharacterDTO();
+        dto.setId(entity.getId());
         dto.setImage(entity.getImage());
         dto.setName(entity.getName()); 
-        dto.setAge(dto.getAge());
-        dto.setWeight(dto.getWeight());
-        dto.setStory(dto.getStory());
+        dto.setAge(entity.getAge());
+        dto.setWeight(entity.getWeight());
+        dto.setStory(entity.getStory());
         if(loadFilmsorSeries){
             List<FilmorSerieDTO> filmorserieDTO = new ArrayList<>();
             for (FilmorSerieEntity filmorserie : entity.getFilmsorseries()) {

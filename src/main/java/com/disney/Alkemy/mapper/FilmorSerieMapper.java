@@ -73,11 +73,12 @@ public class FilmorSerieMapper {
      */
     public FilmorSerieDTO filmorserieEntity2DTO(FilmorSerieEntity entity, boolean loadCharacters) throws ParseException{
         FilmorSerieDTO dto = new FilmorSerieDTO();
+        dto.setId(entity.getId());
         dto.setImage(entity.getImage());
         dto.setTitle(entity.getTitle());
         dto.setCreationdate(Util.dateToString(entity.getCreationdate()));
-        dto.setQualification(dto.getQualification());
-        dto.setGenderId(dto.getGenderId());
+        dto.setQualification(entity.getQualification());
+        dto.setGenderId(entity.getGenderId());
         if(loadCharacters){
             List<CharacterDTO> characterDTO = new ArrayList<>();
             for (CharacterEntity character : entity.getCharacters()) {

@@ -6,4 +6,5 @@ public interface GenderService {
     
     GenderDTO save(GenderDTO dto);
     
+    void delete(Long id);
 }

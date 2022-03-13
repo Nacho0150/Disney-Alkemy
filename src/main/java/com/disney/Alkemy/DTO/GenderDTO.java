@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class GenderDTO implements Serializable{
-    String id;
+    Long id;
     String name;
     String image;
     List<FilmorSerieEntity> filmsorseries;

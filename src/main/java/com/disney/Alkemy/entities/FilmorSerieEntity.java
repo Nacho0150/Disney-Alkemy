@@ -2,6 +2,7 @@ package com.disney.alkemy.entities;
 
 import com.sun.istack.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -48,15 +49,12 @@ public class FilmorSerieEntity implements Serializable { //pelicula o serie
     private Long id;
     
     private String image;
-    
-    @NotNull
     private String title;
     
     @Column(name = "creation_date")
     @Temporal(TemporalType.DATE)
     private Date creationdate;
     
-    @NotNull
     private Integer qualification; //calificacion del 1 al 5
     
     /** 
@@ -68,13 +66,15 @@ public class FilmorSerieEntity implements Serializable { //pelicula o serie
         inverseJoinColumns = @JoinColumn(name="FK_CHARACTERS", nullable = false)
     )
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<CharacterEntity> characters; //personajes asociados a cada pelicula o serie
-
+    private List<CharacterEntity> characters = new ArrayList<>(); //personajes asociados a cada pelicula o serie
+    /**
+     * FetchType.EAGER, SI YO PIDO UN DATO TIPO PELICULA O SERIE, SI O SI VA A VENIR CON SU GENERO
+     */
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "gender_id", insertable = false, updatable = false)
     private GenderEntity gender;
     
-    @Column(name = "gender_id")
+    @Column(name = "gender_id", nullable = false)
     private Long genderId;
     
     //PARA EL SOFTDELETE
