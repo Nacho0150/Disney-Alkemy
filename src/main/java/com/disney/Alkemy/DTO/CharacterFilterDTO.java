@@ -12,6 +12,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CharacterFilterDTO {
     private String name;
-    private Integer age;
-    private List<Long> filmsorseries;
+    private String age;
+    private List<Long> moviesId;
 }

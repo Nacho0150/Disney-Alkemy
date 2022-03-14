@@ -1,6 +1,5 @@
 package com.disney.alkemy.repositories;
 
-import com.disney.alkemy.entities.CharacterEntity;
 import com.disney.alkemy.entities.FilmorSerieEntity;
 import java.util.List;
 import org.springframework.data.jpa.domain.Specification;
@@ -12,5 +11,4 @@ import org.springframework.stereotype.Repository;
 public interface FilmorSerieRepository extends JpaRepository<FilmorSerieEntity, Long>, JpaSpecificationExecutor<FilmorSerieEntity>{
     
     List<FilmorSerieEntity> findAll(Specification<FilmorSerieEntity> spec);
-
 }

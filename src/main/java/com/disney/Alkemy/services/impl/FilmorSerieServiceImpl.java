@@ -51,8 +51,8 @@ public class FilmorSerieServiceImpl implements FilmorSerieService{
         return result;
     }
     
-    public List<FilmorSerieDTO> getFilmsorSeriesFilters(String title, Long gender, String creationdate, String order) throws ParseException{
-        FilmorSerieFilterDTO filterDTO = new FilmorSerieFilterDTO(title, gender, creationdate, order);
+    public List<FilmorSerieDTO> getFilmsorSeriesFilters(String title, String genderId, String creationdate, String order) throws ParseException{
+        FilmorSerieFilterDTO filterDTO = new FilmorSerieFilterDTO(title, genderId, creationdate, order);
         List<FilmorSerieEntity> entities = filmorSerieRepository.findAll(filmorSerieSpecification.getfilmsorseriesFilters(filterDTO));
         List<FilmorSerieDTO> dtos = filmorSerieMapper.filmorserieEntityList2FilterDTOList(entities, true);
         return dtos;

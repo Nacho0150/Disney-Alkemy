@@ -14,7 +14,7 @@ public interface FilmorSerieService {
     
     List<FilmorSerieBasicDTO> getAllFilmsorSeries() throws ParseException;
     
-    List<FilmorSerieDTO> getFilmsorSeriesFilters(String title, Long gender, String creationdate, String order) throws ParseException;
+    List<FilmorSerieDTO> getFilmsorSeriesFilters(String title, String genderId, String creationdate, String order) throws ParseException;
     
     FilmorSerieDTO update(Long id, FilmorSerieDTO filmsorseries, boolean loadCharacters) throws ParamNotFound, ParseException;
     

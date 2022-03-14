@@ -1,15 +1,17 @@
 package com.disney.alkemy.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class FilmorSerieFilterDTO {
     private String title;
-    private Long genderId;
+    private String genderId;
     private String creationdate;
     private String order;
     

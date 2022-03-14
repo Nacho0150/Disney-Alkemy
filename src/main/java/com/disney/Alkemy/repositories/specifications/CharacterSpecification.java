@@ -34,16 +34,16 @@ public class CharacterSpecification {
                                 "%" + filterDTO.getName().toLowerCase() + "%")
                 );
             }
-            if (StringUtils.hasLength(String.valueOf(filterDTO.getAge()))){
-                Integer age = filterDTO.getAge();
+            if (StringUtils.hasLength(filterDTO.getAge())){
+                Integer age = Integer.parseInt(filterDTO.getAge());
                 predicates.add(
                         criteriaBuilder.equal(root.get("age"), age)
                 );
             }
-            if (!CollectionUtils.isEmpty(filterDTO.getFilmsorseries())){
-                Join<FilmorSerieEntity, CharacterEntity> toBeJoin = root.join("movies", JoinType.INNER); //join, para que pueda joinear en paises
+            if (!CollectionUtils.isEmpty(filterDTO.getMoviesId())){
+                Join<FilmorSerieEntity, CharacterEntity> toBeJoin = root.join("filmsorseries", JoinType.INNER); //join, para que pueda joinear en paises
                 Expression<String> filmsorseriesId = toBeJoin.get("id"); //PARA QUE LOS TRAIGA EN BASE AL ID    //INNER PARA QUE ENTRE SI TIENEN UN ARELACION
-                predicates.add(filmsorseriesId.in(filterDTO.getFilmsorseries()));
+                predicates.add(filmsorseriesId.in(filterDTO.getMoviesId()));
             }
             //REMOVE DUPLICATES
             query.distinct(true);   

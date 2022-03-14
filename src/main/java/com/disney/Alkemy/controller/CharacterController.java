@@ -39,20 +39,20 @@ public class CharacterController {
         return ResponseEntity.status(HttpStatus.OK).body(character);
     } 
     
-    @GetMapping("/filter")
+    @GetMapping
     public ResponseEntity<List<CharacterBasicDTO>> getAllCharacters(){ //PARA OBTENER TODOS LAS PELICULAS
         List<CharacterBasicDTO> character = characterService.getAllCharacters();
         return ResponseEntity.status(HttpStatus.OK).body(character);
     } 
     
     //A ESTE @GetMapping LE TENGO QUE PONER UNA ESPECIFICACION PORQUE NO ME DEJA TENER DOS @GetMapping SIN ESPECIFICACIONES
-    @GetMapping
+    @GetMapping("/filter")
     public ResponseEntity<List<CharacterDTO>> characterdetailFilters(
             @RequestParam(required = false) String name,
-            @RequestParam(required = false) Integer age,
-            @RequestParam(required = false) List<Long> filmsorseries
+            @RequestParam(required = false) String age,
+            @RequestParam(required = false) List<Long> moviesId
     ) throws ParseException {
-        List<CharacterDTO> characters = characterService.getCharactersFilters(name, age, filmsorseries);
+        List<CharacterDTO> characters = characterService.getCharactersFilters(name, age, moviesId);
         return ResponseEntity.status(HttpStatus.OK).body(characters);
     }
     

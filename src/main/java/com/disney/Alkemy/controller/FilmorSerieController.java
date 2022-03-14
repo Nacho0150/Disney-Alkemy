@@ -49,11 +49,11 @@ public class FilmorSerieController {
     @GetMapping("/filter")
     public ResponseEntity<List<FilmorSerieDTO>> filmorseriedDetailFilters(
             @RequestParam(required = false) String title,
-            @RequestParam(required = false) Long gender,
+            @RequestParam(required = false) String genderId,
             @RequestParam(required = false) String creationdate,
             @RequestParam(required = false, defaultValue = "ASC") String order
     ) throws ParseException {
-        List<FilmorSerieDTO> filmsorseries = filmorserieService.getFilmsorSeriesFilters(title, gender, creationdate, order);
+        List<FilmorSerieDTO> filmsorseries = filmorserieService.getFilmsorSeriesFilters(title, genderId, creationdate, order);
         return ResponseEntity.status(HttpStatus.OK).body(filmsorseries);
     }
     

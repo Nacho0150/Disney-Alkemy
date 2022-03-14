@@ -58,8 +58,8 @@ public class CharacterServiceImpl implements CharacterService{
         return result;
     }
     
-    public List<CharacterDTO> getCharactersFilters(String name, Integer age, List<Long> filmsorseries) throws ParseException{
-        CharacterFilterDTO filterDTO = new CharacterFilterDTO(name, age, filmsorseries);
+    public List<CharacterDTO> getCharactersFilters(String name, String age, List<Long> moviesId) throws ParseException {
+        CharacterFilterDTO filterDTO = new CharacterFilterDTO(name, age, moviesId);
         List<CharacterEntity> entities = characterRepository.findAll(characterSpecification.getcharactersFilters(filterDTO));
         List<CharacterDTO> dtos = characterMapper.characterEntityList2FilterDTOList(entities, true);
         return dtos;

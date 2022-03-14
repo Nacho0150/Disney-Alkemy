@@ -33,8 +33,8 @@ public class FilmorSerieSpecification {
                                 "%" + filterDTO.getTitle().toLowerCase() + "%")
                 );
             }
-            if (StringUtils.hasLength(String.valueOf(filterDTO.getGenderId()))) {
-                Long genderId = filterDTO.getGenderId();
+            if (StringUtils.hasLength(filterDTO.getGenderId())) {
+                Long genderId = Long.parseLong(filterDTO.getGenderId());
                 predicates.add(
                         criteriaBuilder.equal(root.get("gender"), genderId)
                 );

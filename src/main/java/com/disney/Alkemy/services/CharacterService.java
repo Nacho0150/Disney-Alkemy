@@ -14,7 +14,7 @@ public interface CharacterService {
     
     List<CharacterBasicDTO> getAllCharacters();
     
-    List<CharacterDTO> getCharactersFilters(String name, Integer age, List<Long> filmsorseries) throws ParseException;
+    List<CharacterDTO> getCharactersFilters(String name, String age, List<Long> moviesId) throws ParseException;
     
     CharacterDTO update(Long id, CharacterDTO character) throws ParamNotFound, ParseException;
     
