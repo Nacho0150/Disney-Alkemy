@@ -6,13 +6,19 @@
 	},
 	"item": [
 		{
-			"name": "filmorseries",
+			"name": "create-filmorserie",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"image\": \"/usr/tmp/img2.jpg\",\r\n    \"title\": \"Frozen\",\r\n    \"creationdate\": \"2019-01-25\",\r\n    \"qualification\": \"4\",\r\n    \"characters\": [\r\n        {\"name\": \"Elsa\"\r\n        }]\r\n}",
+					"raw": "{\r\n    \"image\": \"/usr/tmp/img2.jpg\",\r\n    \"title\": \"Frozen\",\r\n    \"creationdate\": \"2014-01-02\",\r\n    \"qualification\": \"5\",\r\n    \"genderId\": \"1\",\r\n    \"characters\": [\r\n        {\r\n            \"image\": \"/usr/tmp/img2.jpg\",\r\n            \"name\": \"Elsa\",\r\n            \"age\": \"19\",\r\n            \"weight\": \"60.4\",\r\n            \"story\": \"Princesa de Arendelle\"\r\n        },\r\n        {\r\n            \"image\": \"/usr/tmp/img3.jpg\",\r\n            \"name\": \"Ana\",\r\n            \"age\": \"17\",\r\n            \"weight\": \"62.2\",\r\n            \"story\": \"Princesa de Arendelle\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,14 +26,570 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/filmorseries",
+					"raw": "http://localhost:8080/movies",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"filmorseries"
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-filmorserie 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"image\": \"/usr/tmp/img3.jpg\",\r\n    \"title\": \"Encanto\",\r\n    \"creationdate\": \"2021-11-25\",\r\n    \"qualification\": \"4\",\r\n    \"genderId\": \"2\",\r\n    \"characters\": [\r\n        {\r\n            \"image\": \"/usr/tmp/img3.jpg\",\r\n            \"name\": \"Mirabel Madrigal\",\r\n            \"age\": \"17\",\r\n            \"weight\": \"60.1\",\r\n            \"story\": \"Parte de la familia Madrigal\"\r\n        },\r\n        {\r\n            \"image\": \"/usr/tmp/img3.jpg\",\r\n            \"name\": \"Bruno Madrigal\",\r\n            \"age\": \"25\",\r\n            \"weight\": \"59.5\",\r\n            \"story\": \"Familiar desaparecido de los Madrigal\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modify-filmorserie",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"image\": \"/usr/tmp/img3.jpg\",\r\n    \"title\": \"Encanto\",\r\n    \"creationdate\": \"2021-11-25\",\r\n    \"qualification\": \"5\",\r\n    \"genderId\": \"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-character",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"image\": \"/usr/tmp/img2.jpg\",\r\n    \"name\": \"Olaf\",\r\n    \"age\": \"2\",\r\n    \"weight\": \"30.2\",\r\n    \"story\": \"Muñeco de nieve, que Elsa le dió vida\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/characters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-gender",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Animación\",\r\n    \"image\": \"/usr/tmp/img2.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/genders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"genders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-gender 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Musical\",\r\n    \"image\": \"/usr/tmp/img1.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/genders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"genders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-filmorserie/id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-character/id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/characters/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list-filmsorseries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list-characters",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/characters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modify-characters",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"image\": \"/usr/tmp/img3.jpg\",\r\n    \"name\": \"Bruno\",\r\n    \"age\": \"25\",\r\n    \"weight\": \"58.2\",\r\n    \"story\": \"Familiar desaparecido de los Madrigal\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/characters/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "detail-character",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/characters/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "detail-filmorserie",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filter-characters",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/characters/filter",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Elsa",
+							"disabled": true
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"disabled": true
+						},
+						{
+							"key": "moviesId",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filter-filmsorseries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies/filter",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Frozen",
+							"disabled": true
+						},
+						{
+							"key": "genderId",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "creationdate",
+							"value": "2014-01-02",
+							"disabled": true
+						},
+						{
+							"key": "order",
+							"value": "DESC",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filter-filmsorseries 2",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvaWJhbmV6MDFAZ21haWwuY29tIiwiZXhwIjoxNjQ3MjMxODk2LCJpYXQiOjE2NDcxOTU4OTZ9.ELMlS2j5IZzJqVRm-UNZ60zb3JJN0KsFz8H2PX6xcvI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies/filter?genderId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Encanto",
+							"disabled": true
+						},
+						{
+							"key": "genderId",
+							"value": "2"
+						},
+						{
+							"key": "creationdate",
+							"value": "2021-11-25",
+							"disabled": true
+						},
+						{
+							"key": "order",
+							"value": "DESC",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"ignacioibanez01@gmail.com\",\r\n    \"password\": \"password1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"ignacioibanez01@gmail.com\",\r\n    \"password\": \"password1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
 					]
 				}
 			},
